@@ -1,7 +1,9 @@
-package com.lyloou.tvhi;
+package com.lyloou.tvhi.main;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.lyloou.tvhi.R;
 
 public class MainActivity extends Activity {
 

@@ -11,7 +11,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!--
      true:  your app runs on only TV
-     false: your app runs on phone and TV -->
+     false: your app runs on phone and TV
+    -->
     <uses-feature
         android:name="android.software.leanback"
         android:required="true" />
@@ -23,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.lyloou.tvhi.MainActivity"
+            android:name=".main.MainActivity"
             android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +32,7 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".channelgrid.ChannelGridActivity"></activity>
     </application>
 
 </manifest>

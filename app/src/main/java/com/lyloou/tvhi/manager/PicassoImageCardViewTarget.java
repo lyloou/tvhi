@@ -1,4 +1,4 @@
-package com.lyloou.tvhi;
+package com.lyloou.tvhi.manager;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;

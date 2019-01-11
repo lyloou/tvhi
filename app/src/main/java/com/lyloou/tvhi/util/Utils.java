@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.lyloou.tvhi;
+package com.lyloou.tvhi.util;
 
 import android.content.Context;
 import android.graphics.Point;

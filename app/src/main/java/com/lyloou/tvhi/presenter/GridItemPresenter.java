@@ -1,4 +1,4 @@
-package com.lyloou.tvhi;
+package com.lyloou.tvhi.presenter;
 
 import android.graphics.Color;
 import android.support.v17.leanback.widget.Presenter;
@@ -6,7 +6,9 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-class GridItemPresenter extends Presenter {
+import com.lyloou.tvhi.R;
+
+public class GridItemPresenter extends Presenter {
     private static final int GRID_ITEM_WIDTH = 300;
     private static final int GRID_ITEM_HEIGHT = 200;
 

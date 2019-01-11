@@ -1,4 +1,4 @@
-package com.lyloou.tvhi;
+package com.lyloou.tvhi.manager;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -9,6 +9,7 @@ import android.support.v17.leanback.app.BackgroundManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
+import com.lyloou.tvhi.R;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 

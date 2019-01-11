@@ -1,5 +1,6 @@
-package com.lyloou.tvhi;
+package com.lyloou.tvhi.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v17.leanback.app.BrowseFragment;
@@ -8,11 +9,19 @@ import android.support.v17.leanback.widget.HeaderItem;
 import android.support.v17.leanback.widget.ListRow;
 import android.support.v17.leanback.widget.ListRowPresenter;
 import android.support.v17.leanback.widget.ObjectAdapter;
+import android.support.v17.leanback.widget.OnItemViewClickedListener;
 import android.support.v17.leanback.widget.OnItemViewSelectedListener;
 import android.support.v17.leanback.widget.Presenter;
 import android.support.v17.leanback.widget.Row;
 import android.support.v17.leanback.widget.RowPresenter;
 import android.util.Log;
+
+import com.lyloou.tvhi.R;
+import com.lyloou.tvhi.channelgrid.ChannelGridActivity;
+import com.lyloou.tvhi.manager.PicassoBackgroundManager;
+import com.lyloou.tvhi.model.Movie;
+import com.lyloou.tvhi.presenter.CardPresenter;
+import com.lyloou.tvhi.presenter.GridItemPresenter;
 
 public class MainFragment extends BrowseFragment {
     private static final String TAG = MainFragment.class.getSimpleName();
@@ -34,6 +43,7 @@ public class MainFragment extends BrowseFragment {
 
     private void setupEventListener() {
         setOnItemViewSelectedListener(new ItemViewSelectedListener());
+        setOnItemViewClickedListener(new ItemViewClickedListener());
     }
 
     private void loadRows() {
@@ -104,6 +114,14 @@ public class MainFragment extends BrowseFragment {
             } else if (item instanceof Movie) { // CardPresenter row
                 mBackgroundManager.updateBackgroundWithDelay(((Movie) item).getCardImageUrl());
             }
+        }
+    }
+
+    private final class ItemViewClickedListener implements OnItemViewClickedListener {
+        @Override
+        public void onItemClicked(Presenter.ViewHolder viewHolder, Object o, RowPresenter.ViewHolder viewHolder1, Row row) {
+            Intent intent = new Intent(getActivity(), ChannelGridActivity.class);
+            startActivity(intent);
         }
     }
 }

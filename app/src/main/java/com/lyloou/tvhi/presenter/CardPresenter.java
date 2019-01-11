@@ -1,4 +1,4 @@
-package com.lyloou.tvhi;
+package com.lyloou.tvhi.presenter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -8,6 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lyloou.tvhi.R;
+import com.lyloou.tvhi.manager.PicassoImageCardViewTarget;
+import com.lyloou.tvhi.model.Movie;
+import com.lyloou.tvhi.util.Utils;
 import com.squareup.picasso.Picasso;
 
 import java.net.URI;
