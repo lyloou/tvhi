@@ -3,7 +3,6 @@ package com.lyloou.tvhi.channelgrid;
 
 import android.os.Bundle;
 import android.support.v17.leanback.widget.ArrayObjectAdapter;
-import android.support.v17.leanback.widget.ObjectAdapter;
 import android.support.v17.leanback.widget.OnItemViewClickedListener;
 import android.support.v17.leanback.widget.OnItemViewSelectedListener;
 import android.support.v17.leanback.widget.Presenter;
@@ -15,10 +14,13 @@ import android.util.Log;
 import com.lyloou.tvhi.model.Movie;
 import com.lyloou.tvhi.presenter.CardPresenter;
 
+import java.util.Random;
+
 public class ChannelGridFragment extends android.support.v17.leanback.app.VerticalGridFragment {
 
     private static final String TAG = ChannelGridFragment.class.getSimpleName();
     private static final int NUM_COLUMNS = 3;
+    ArrayObjectAdapter imageRowAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,8 @@ public class ChannelGridFragment extends android.support.v17.leanback.app.Vertic
         gridPresenter.setNumberOfColumns(NUM_COLUMNS);
         setGridPresenter(gridPresenter);
 
-        setAdapter(getImageRowAdapter());
+        imageRowAdapter = getImageRowAdapter();
+        setAdapter(imageRowAdapter);
     }
 
     static final String[] images = new String[]{
@@ -53,7 +56,7 @@ public class ChannelGridFragment extends android.support.v17.leanback.app.Vertic
             "http://pic.netbian.com/uploads/allimg/190105/180342-1546682622077d.jpg",
     };
 
-    private ObjectAdapter getImageRowAdapter() {
+    private ArrayObjectAdapter getImageRowAdapter() {
         ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(new CardPresenter());
         for (int i = 0; i < 10; i++) {
             Movie movie = new Movie();
@@ -71,13 +74,28 @@ public class ChannelGridFragment extends android.support.v17.leanback.app.Vertic
         setOnItemViewSelectedListener(new ItemViewSelectedListener());
     }
 
+    private Random random = new Random(47);
+
     private final class ItemViewClickedListener implements OnItemViewClickedListener {
         @Override
         public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item,
                                   RowPresenter.ViewHolder rowViewHolder, Row row) {
             if (item instanceof Movie) {
                 Movie movie = (Movie) item;
+                Movie item1 = new Movie();
+                item1.setCardImageUrl("http://pic.netbian.com/uploads/allimg/190105/180342-1546682622077d.jpg");
+                item1.setTitle("自己定义");
+                item1.setStudio("自己定义的副标题");
 
+                int rand = random.nextInt(100) % 3;
+                if (rand == 0) {
+                    imageRowAdapter.add(item1);
+                } else if (rand == 1) {
+                    imageRowAdapter.remove(movie);
+                } else {
+                    imageRowAdapter.clear();
+                    imageRowAdapter.add(item1);
+                }
             }
         }
     }
